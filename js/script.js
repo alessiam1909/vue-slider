@@ -31,6 +31,9 @@ createApp({
             ]
         }
     },
+    created(){
+        this.autoplay();
+    },
     methods: {
         //immagine cambia al click
         cambiaImmagine(index)
@@ -49,6 +52,11 @@ createApp({
             if(this.activeImage < 0){
                 this.activeImage = this.slides.length - 1;
             }
+        },
+        autoplay(){
+            setInterval(() => {
+                this.next()
+            }, 3000)
         }
 
     }
