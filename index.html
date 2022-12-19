@@ -17,7 +17,9 @@
             <div class="slider-wrapper" tabindex="0">
 
                 <div class="item">
-                    <img  :src="slides[activeImage].image" v-bind:alt="slides.title">
+                    <div class="contenitore-immagine"  @mouseover="stopAutoplay" @mouseleave="StartAutoplay">
+                        <img  :src="slides[activeImage].image" v-bind:alt="slides.title">
+                    </div>
                     <div class="text">
                         <h3>{{slides[activeImage].title}}</h3>
                         <p> {{slides[activeImage].text}}</p>
@@ -27,7 +29,7 @@
                 <div class="thumbs">
                     <div class="prev" @click="prev()"></div>
                     <div class="next" @click="next()"></div>
-                    <div class="thumb" v-for="(game, index) in slides" :class="(index == activeImage) ? 'active' : '' ">
+                    <div class="thumb" v-for="(game, index) in slides" :class="(index === activeImage) ? 'active' : '' ">
                         <img :src="game.image" alt="gameImage" @click="cambiaImmagine(index)"/>
                     </div>
                 </div>

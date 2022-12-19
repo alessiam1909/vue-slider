@@ -5,6 +5,7 @@ const {
 createApp({
     data(){
         return{
+            autoplay : null,
             activeImage : 0,
             slides:[
                     {   
@@ -31,9 +32,7 @@ createApp({
             ]
         }
     },
-    created(){
-        this.autoplay();
-    },
+   
     methods: {
         //immagine cambia al click
         cambiaImmagine(index)
@@ -53,12 +52,16 @@ createApp({
                 this.activeImage = this.slides.length - 1;
             }
         },
-        autoplay(){
-            setInterval(() => {
+        StartAutoplay(){
+            this.autoplay = setInterval(() => {
                 this.next()
             }, 3000)
+        },
+        stopAutoplay(){
+            clearInterval(this.autoplay);
+                this.autoplay = null;
         }
-
+        
     }
 }).mount('#app')
 
@@ -66,4 +69,3 @@ createApp({
 
 
 
-console.log(slides);
